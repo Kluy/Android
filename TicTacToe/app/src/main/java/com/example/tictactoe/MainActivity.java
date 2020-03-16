@@ -60,10 +60,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void change(Button button){
-        if(textView.getText().equals("O turn")){
+        if(textView.getText().equals("X turn")){
             button.setText(R.string.o);
             textView.setText(R.string.turn_x);
-        } else if(textView.getText().equals("X turn")) {
+        } else if(textView.getText().equals("O turn")) {
             button.setText(R.string.x);
             textView.setText(R.string.turn_o);
         }
