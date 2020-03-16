@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="text">text</string>
+    <string name="hello">Hello!</string>
+    <string name="helloName">Hello, %1$s!</string>
+    <string name="button">Button</string>
+    <string name="ok">OK</string>
+    <string name="buttonClean">Clean</string>
+    <string name="buttonChangeBackground">Background</string>
+    <string name="empty"> </string>
+    <string name="description">Description android</string>
+    <string name="hints_insertYourName">Type your name</string>
+    <string name="imageTag">I\'m android</string>
+    <array name="cars">
+        <item>BMW</item>
+        <item>Porsche</item>
+        <item>Maybach</item>
+    </array>
+    <string name="model">Model: %1$s</string>
+    <string name="speed">Speed: %1$s</string>
+    <string name="engine">Engine: %1$s</string>
+</resources>
