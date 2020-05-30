@@ -1,11 +1,16 @@
 package com.example.tictactoe;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
     Button button31;
     Button button32;
     Button button33;
+    String name1;
+    String name2;
+
+    int a = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,38 +44,50 @@ public class MainActivity extends AppCompatActivity {
         button31 = findViewById(R.id.button31);
         button32 = findViewById(R.id.button32);
         button33 = findViewById(R.id.button33);
+
+        name1 = getIntent().getStringExtra("name1");
+        name2 = getIntent().getStringExtra("name2");
+
+        textView.setText(getString(R.string.turn, name1));
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_items, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menu_item:
+                Intent intent = new Intent(this, NameActivity.class);
+                startActivity(intent);
+                Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
+        }
+        return false;
     }
 
     public void click(View view){
         Button button = (Button)view;
         String b = button.getText().toString();
-        if(b.equals("")){
-            change(button);
-            check();
-        }
-    }
 
-    public void clear(View view){
-        button11.setText(R.string.empty_text);
-        button12.setText(R.string.empty_text);
-        button13.setText(R.string.empty_text);
-        button21.setText(R.string.empty_text);
-        button22.setText(R.string.empty_text);
-        button23.setText(R.string.empty_text);
-        button31.setText(R.string.empty_text);
-        button32.setText(R.string.empty_text);
-        button33.setText(R.string.empty_text);
-        textView.setText(R.string.turn_x);
-    }
-
-    public void change(Button button){
-        if(textView.getText().equals("O turn")){
+        if(b.equals("") && textView.getText().equals(getString(R.string.turn, name2))){
             button.setText(R.string.o);
-            textView.setText(R.string.turn_x);
-        } else if(textView.getText().equals("X turn")) {
+            textView.setText(getString(R.string.turn, name1));
+        } else if(b.equals("") && textView.getText().equals(getString(R.string.turn, name1))){
             button.setText(R.string.x);
-            textView.setText(R.string.turn_o);
+            textView.setText(getString(R.string.turn, name2));
         }
+
+        a++;
+        if (a >= 5) check();
+    }
+
+    public void restart(View view){
+        Toast.makeText(this, "Lets play again", Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     public void check(){
@@ -78,7 +99,8 @@ public class MainActivity extends AppCompatActivity {
                 button13.getText().equals("X") && button23.getText().equals("X") && button33.getText().equals("X") ||
                 button21.getText().equals("X") && button22.getText().equals("X") && button23.getText().equals("X") ||
                 button31.getText().equals("X") && button32.getText().equals("X") && button33.getText().equals("X")){
-            textView.setText(R.string.x_win);
+            textView.setText(getString(R.string.winner, name1));
+            Toast.makeText(this, getString(R.string.winner, name1), Toast.LENGTH_SHORT).show();
         } else if(button11.getText().equals("O") && button21.getText().equals("O") && button31.getText().equals("O") ||
                 button11.getText().equals("O") && button12.getText().equals("O") && button13.getText().equals("O") ||
                 button11.getText().equals("O") && button22.getText().equals("O") && button33.getText().equals("O") ||
@@ -87,7 +109,8 @@ public class MainActivity extends AppCompatActivity {
                 button13.getText().equals("O") && button23.getText().equals("O") && button33.getText().equals("O") ||
                 button21.getText().equals("O") && button22.getText().equals("O") && button23.getText().equals("O") ||
                 button31.getText().equals("O") && button32.getText().equals("O") && button33.getText().equals("O")){
-            textView.setText(R.string.o_win);
+            textView.setText(getString(R.string.winner, name2));
+            Toast.makeText(this, getString(R.string.winner, name2), Toast.LENGTH_SHORT).show();
         }
     }
 }

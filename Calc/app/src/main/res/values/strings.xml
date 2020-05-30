@@ -20,4 +20,9 @@
     <string name="nine">9</string>
     <string name="zero">0</string>
     <string name="hint_input">Type here</string>
+    <string name="sin">sin</string>
+    <string name="cos">cos</string>
+    <string name="tan">tan</string>
+    <string name="extended">Extended</string>
+    <string name="plain">Plain</string>
 </resources>

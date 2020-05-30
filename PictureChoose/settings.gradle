@@ -1,0 +1,2 @@
+rootProject.name='PictureChoose'
+include ':app'

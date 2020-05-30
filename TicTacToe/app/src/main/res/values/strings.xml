@@ -5,7 +5,14 @@
     <string name="o">O</string>
     <string name="turn_o">O turn</string>
     <string name="turn_x">X turn</string>
-    <string name="clear">Clear</string>
+    <string name="restart">Restart Game</string>
     <string name="x_win">X win</string>
     <string name="o_win">O win</string>
+    <string name="winner">Winner is %1$s</string>
+    <string name="turn">%1$s\'s turn</string>
+    <string name="name1">Enter first player name</string>
+    <string name="name2">Enter second player name</string>
+    <string name="name_hint">Please enter your name here</string>
+    <string name="start">Start Game</string>
+    <string name="Settings">Settings</string>
 </resources>
